@@ -23,4 +23,8 @@ Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/{token}/verify',[AuthController::class,'verify']);
 
+// settings
+Route::apiResource('settings', SettingController::class);
+
+
 
