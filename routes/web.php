@@ -23,3 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// settings
+
+// Route::apiResource('settings', SettingController::class);
