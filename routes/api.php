@@ -53,5 +53,6 @@ Route::get('/projects_nothidden',[ProjectController::class,'appear']);
 //كل المشاريع المخفيه
 Route::get('/projects_hidden',[ProjectController::class,'hidden']);
 
+Route::apiResource('employees', EmployeeController::class);
 
 
