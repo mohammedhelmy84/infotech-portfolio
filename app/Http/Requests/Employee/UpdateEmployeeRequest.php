@@ -25,7 +25,8 @@ class UpdateEmployeeRequest extends FormRequest
             
             'user_id' => 'required|exists:users,id',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'specialization' => 'required|string|max:255',
+            'specialization' => 'nullable|string|max:255',
+
        
     ];
     }

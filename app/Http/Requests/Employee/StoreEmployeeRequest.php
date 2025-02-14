@@ -25,7 +25,8 @@ class StoreEmployeeRequest extends FormRequest
            
             'user_id' => 'required|exists:users,id',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-            'specialization' => 'required|string|max:255',
+            'specialization' => 'nullable|string|max:255',
+
         
     ];
     }
