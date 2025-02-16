@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\SettingController;
+use App\Http\Controllers\Api\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
