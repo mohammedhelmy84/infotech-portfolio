@@ -58,9 +58,9 @@ Route::get('/projects_nothidden',[ProjectController::class,'appear']);
 //كل المشاريع المخفيه
 Route::get('/projects_hidden',[ProjectController::class,'hidden']);
 
-Route::apiResource('employees', EmployeeController::class);
+Route::apiResource('/employees', EmployeeController::class);
 
 //contact us
-Route::post('', [ContactUsController::class, 'sendMessage']);
+Route::post('/contact', [ContactUsController::class, 'sendMessage']);
 
 
