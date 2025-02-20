@@ -20,7 +20,7 @@ class ContactUsController extends Controller
             'mobile' => ['required','regex:/^[0-9]{11}$/'],
             'address' => 'required|string|max:50',
             'email' => 'required|email|max:255',
-            'title' => 'required|in:option1,option2,option3,option4',
+            'title' => 'required|max:255',
             'message' => 'required|string',
         ]);
 
