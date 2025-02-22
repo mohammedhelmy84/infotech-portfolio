@@ -21,15 +21,10 @@ class UpdateEmployeeRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            
-           
-                'user_id' => 'sometimes|exists:users,id',  // اجعل `user_id` اختياريًا
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // اجعل `image` اختياريًا
-            
-            'specialization' => 'nullable|string|max:255',
-
-       
+        return [  
+            'user_id' => 'sometimes|exists:users,id',  // اجعل `user_id` اختياريًا
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // اجعل `image` اختياريًا
+           'specialization' => 'nullable|string|max:255'
     ];
     }
 }

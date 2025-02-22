@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id'); //  user_id
             $table->string('image'); //  image
             $table->string('specialization')->default('')->nullable();
-            
             $table->timestamps(); //  created_at و updated_at
 
             //   ( Foreign Keys)

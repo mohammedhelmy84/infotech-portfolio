@@ -29,6 +29,7 @@ Route::group(['middleware'=>'guest'],function(){
 });
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/verify/{token}', [AuthController::class, 'verify']);
+
 // settings
 Route::apiResource('settings', SettingController::class);
 
