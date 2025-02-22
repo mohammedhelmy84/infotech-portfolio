@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\SettingController;
-
+use App\Http\Controllers\Api\ContactUsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +29,7 @@ Route::group(['middleware'=>'guest'],function(){
 });
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/verify/{token}', [AuthController::class, 'verify']);
-
+Route::post('/users',[AuthController::class,'get_users']);
 // settings
 Route::apiResource('settings', SettingController::class);
 
@@ -61,5 +61,5 @@ Route::apiResource('/employees', EmployeeController::class);
 
 //contact us
 Route::post('/contact', [ContactUsController::class, 'sendMessage']);
-
+Route::get('/contact', [ContactUsController::class, 'getAllMessages']);
 
