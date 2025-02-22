@@ -30,7 +30,7 @@ Route::group(['middleware'=>'guest'],function(){
 });
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/verify/{token}', [AuthController::class, 'verify']);
-Route::get('/users',[AuthController::class,'get_users']);
+
 
 
 
@@ -38,6 +38,8 @@ Route::get('/users',[AuthController::class,'get_users']);
 
 Route::group(['middleware'=>'auth:sanctum'],function(){
 
+
+    Route::get('/users',[AuthController::class,'get_users']);
     Route::post('/register',[AuthController::class,'register']);
 
 // Settings
