@@ -11,7 +11,7 @@ class UpdateEmployeeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,10 @@ class UpdateEmployeeRequest extends FormRequest
     {
         return [
             
-            'user_id' => 'required|exists:users,id',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+           
+                'user_id' => 'sometimes|exists:users,id',  // اجعل `user_id` اختياريًا
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // اجعل `image` اختياريًا
+            
             'specialization' => 'nullable|string|max:255',
 
        
