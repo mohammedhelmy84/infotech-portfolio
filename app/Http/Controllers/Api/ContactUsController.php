@@ -22,30 +22,40 @@ class ContactUsController extends Controller
             'email' => 'required|email|max:255',
             'title' => 'required|max:255',
             'message' => 'required|string',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'حقول مطلوبة',
-                'errors' => $validator->errors()
-            ], 422);
+            ]);
+                if ($validator->fails()) {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'حقول مطلوبة',
+                        'errors' => $validator->errors()
+                    ], 422);
+                }
+        
+                $contactus = ContactUs::create([
+                    'firstname'=>$request->firstname,
+                    'lastname'=>$request->lastname,
+                    'mobile'=>$request->mobile,
+                    'address'=>$request->address,
+                    'email'=>$request->email,
+                    'title'=>$request->title,
+                    'message'=>$request->message,
+           
+                ]);
+        
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'تم الإرسال بنجاح'
+                ], 200);
+            }
+            public function getAllMessages()
+            {
+                $messages = ContactUs::all();
+        
+                return response()->json([
+                    'status' => 'success',
+                    'messages' => $messages
+                ], 200);
+            }
         }
+        
 
-        $contactus = ContactUs::create([
-            'firstname'=>$request->firstname,
-            'lastname'=>$request->lastname,
-            'mobile'=>$request->mobile,
-            'address'=>$request->address,
-            'email'=>$request->email,
-            'title'=>$request->title,
-            'message'=>$request->message,
-   
-        ]);
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'تم الإرسال بنجاح'
-        ], 200);
-    }
-}
