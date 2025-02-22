@@ -18,6 +18,7 @@ class EmployeeController extends Controller
      */
      public function __construct( ) {
     $this->middleware('auth:sanctum')->except('index');
+    // $this->middleware('guest:sanctum')->only('index');
 }
     public function index()
     {
@@ -70,7 +71,7 @@ if ($request->hasFile('image')) {
     
     // التحقق مما إذا كان الموظف موجودًا
     if (!$employee) {
-        return Helpers::jsonResponse(false, null, 'Employee not found', 404);
+        return Helpers::jsonResponse(false, null, 'الموظف غير موجود', 404);
     }
 
     // الحصول على البيانات التي تم التحقق منها من الطلب
@@ -90,7 +91,7 @@ if ($request->hasFile('image')) {
     // تحديث بيانات الموظف مرة واحدة فقط
     $employee->update($validated);
 
-    return Helpers::jsonResponse(true, $employee, 'Employee updated successfully');
+    return Helpers::jsonResponse(true, $employee, 'لقد تم عمل التعديل بنجاح');
 }
 
 

@@ -26,13 +26,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware'=>'guest'],function(){ 
-    Route::post('/register',[AuthController::class,'register']);
+    
 });
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/verify/{token}', [AuthController::class, 'verify']);
 Route::get('/users',[AuthController::class,'get_users']);
 
+
+
+
+
 Route::group(['middleware'=>'auth:sanctum'],function(){
+
+    Route::post('/register',[AuthController::class,'register']);
+
 // Settings
 Route::apiResource('settings', SettingController::class);
 
@@ -50,12 +57,12 @@ Route::post('/projects/create',[ProjectController::class,'store']);
 Route::put('/projects/update/{id}',[ProjectController::class,'update']);
 Route::delete('/projects/delete/{id}',[ProjectController::class,'delete']);
 
-Route::apiResource('/employees', EmployeeController::class);
 
 Route::get('/contact', [ContactUsController::class, 'getAllMessages']);
 
 
 });
+Route::apiResource('/employees', EmployeeController::class);
 // Projects_categories 
 Route::get('/Category',[CategoryController::class,'all']);
 
@@ -71,4 +78,3 @@ Route::get('/projects_nothidden',[ProjectController::class,'appear']);
 
 //contact us
 Route::post('/contact', [ContactUsController::class, 'sendMessage']);
-
