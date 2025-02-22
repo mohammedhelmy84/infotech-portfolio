@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\SettingController;
+use App\Http\Controllers\Api\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
-Route::get('/{token}/verify',[AuthController::class,'verify']);
-
+Route::get('/verify/{token}', [AuthController::class, 'verify']);
 // settings
 Route::apiResource('settings', SettingController::class);
 
