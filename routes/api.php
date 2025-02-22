@@ -32,12 +32,11 @@ Route::post('/login',[AuthController::class,'login']);
 Route::get('/verify/{token}', [AuthController::class, 'verify']);
 Route::get('/users',[AuthController::class,'get_users']);
 
+Route::group(['middleware'=>'auth:sanctum'],function(){
 // Settings
 Route::apiResource('settings', SettingController::class);
 
-
 // Projects_categories 
-Route::get('/Category',[CategoryController::class,'all']);
 Route::get('/Category/{id}',[CategoryController::class,'show']);
 Route::post('/Category/create',[CategoryController::class,'store']);
 Route::put('/Category/update/{id}',[CategoryController::class,'update']);
@@ -51,17 +50,25 @@ Route::post('/projects/create',[ProjectController::class,'store']);
 Route::put('/projects/update/{id}',[ProjectController::class,'update']);
 Route::delete('/projects/delete/{id}',[ProjectController::class,'delete']);
 
+Route::apiResource('/employees', EmployeeController::class);
+
+Route::get('/contact', [ContactUsController::class, 'getAllMessages']);
+
+
+});
+// Projects_categories 
+Route::get('/Category',[CategoryController::class,'all']);
+
+
 
 // id كل مشايع الموجوده فى قسم معين  ب 
-Route::get('/project_category/{id}',[ProjectController::class,'categorries']);
+// Route::get('/project_category/{id}',[ProjectController::class,'categorries']);
 // كل المشاريع المتاحه بس المخفيه لااا
 Route::get('/projects_nothidden',[ProjectController::class,'appear']);
 //كل المشاريع المخفيه
-Route::get('/projects_hidden',[ProjectController::class,'hidden']);
+// Route::get('/projects_hidden',[ProjectController::class,'hidden']);
 
-Route::apiResource('/employees', EmployeeController::class);
 
 //contact us
 Route::post('/contact', [ContactUsController::class, 'sendMessage']);
-Route::get('/contact', [ContactUsController::class, 'getAllMessages']);
 

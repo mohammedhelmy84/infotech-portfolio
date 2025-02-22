@@ -16,6 +16,9 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the employees.
      */
+     public function __construct( ) {
+    $this->middleware('auth:sanctum')->except('index');
+}
     public function index()
     {
         $employees = Employee::with('user')->get();
