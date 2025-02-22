@@ -10,16 +10,21 @@ class SettingController extends Controller
 {
     public function index()
     {
-        return response()->json(Setting::all());
+        return response()->json(Setting::first());
     }
 
     public function store(Request $request)
     {
+        $mainSetting = Setting::first();
+        if ($mainSetting) {
+            return response()->json(['error' => 'لا تستطيع عمل اكتر من اعدادات'], 400);
+        } 
+
         $data = $request->validate([
             'name'        => 'nullable|string',
             'description' => 'nullable|string',
-            'logo'        => 'nullable|string',
-            'favicon'     => 'nullable|string',
+           'logo'        => 'nullable|string',
+           'favicon'     => 'nullable|string',
             'email'       => 'nullable|email',
             'phone'       => 'nullable|string',
             'address'     => 'nullable|string',
@@ -43,7 +48,7 @@ class SettingController extends Controller
 
     public function update(Request $request, Setting $setting)
     {
-        $data = $request->validate([
+        $request->validate([
             'name'        => 'nullable|string',
             'description' => 'nullable|string',
             'logo'        => 'nullable|string',
@@ -58,6 +63,7 @@ class SettingController extends Controller
             'tiktok'      => 'nullable|url',
         ]);
 
+        $data = $request->all();
         $setting->update($data);
         return response()->json($setting);
     }
@@ -66,7 +72,8 @@ class SettingController extends Controller
     public function destroy(Setting $setting)
     {
         $setting->delete();
-        return response()->json(null, 204);
+        return response()->json('تم حذف الرساله', 200);
+
     }
 }
  

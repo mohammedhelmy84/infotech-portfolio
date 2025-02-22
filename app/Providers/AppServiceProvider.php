@@ -20,14 +20,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(!app()->runningInConsole()){
-        $setting = Setting::firstOr(function () {
-            return Setting::create([
-                 'name' => 'site_name',
-                 'description' => 'Laravel'
-             ]);
-          });
-          view()->share('setting', $setting);
-        }
+        // if(!app()->runningInConsole()){
+        // $setting = Setting::firstOr(function () {
+        //     return Setting::create([
+        //          'name' => 'site_name',
+        //          'description' => 'Laravel'
+        //      ]);
+        //   });
+        //   view()->share('setting', $setting);
+        // }
     }
 }
